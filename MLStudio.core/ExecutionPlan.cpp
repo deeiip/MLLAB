@@ -82,7 +82,7 @@ void ExecutionPlan::Execute()
 {
 	for each (auto item in this->StartNodes)
 	{
-		if ()
+		
 	}
 }
 #endif

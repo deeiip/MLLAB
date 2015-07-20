@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "Node.h"
 
 
@@ -16,7 +17,7 @@ Node::Node(Node&&)
 }
 Node& Node::operator = (const Node&)
 {
-
+	return Node();
 }
 
 
@@ -38,7 +39,7 @@ std::vector<Node>& Node::GetDependency()
 }
 void Node::Execute()
 {
-
+	ResultReady = true;
 }
 bool Node::IsExecutable()
 {

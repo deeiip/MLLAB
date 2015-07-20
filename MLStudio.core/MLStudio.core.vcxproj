@@ -79,22 +79,29 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseTypes.h" />
     <ClInclude Include="config.h" />
+    <ClInclude Include="Endpoint.h" />
     <ClInclude Include="ExecutionPlan.h" />
+    <ClInclude Include="FileTypeEndpoint.h" />
     <ClInclude Include="FutureManager.h" />
     <ClInclude Include="Loader.h" />
     <ClInclude Include="LoaderManager.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="NodeMeta.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Endpoint.cpp" />
     <ClCompile Include="ExecutionPlan.cpp" />
+    <ClCompile Include="FileTypeEndpoint.cpp" />
     <ClCompile Include="FutureManager.cpp" />
     <ClCompile Include="Loader.cpp" />
     <ClCompile Include="LoaderManager.cpp" />
     <ClCompile Include="MLStudio.core.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="NodeMeta.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
