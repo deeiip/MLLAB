@@ -26,11 +26,15 @@ private:
 #else
 	bool ResultReady;
 	bool exec_able;
-	bool hot;
 #endif
 	
 public:
+
+#ifdef ALLOW_MULTITHREADING
 	bool executing;
+
+	bool IsHot();
+#endif
 	Node();
 	Node(const Node&);
 	Node(Node&&);
@@ -43,7 +47,6 @@ public:
 	std::vector<Node>& GetDependency();
 	void Execute();
 	bool IsExecutable();
-	bool IsHot();
 	~Node();
 };
 

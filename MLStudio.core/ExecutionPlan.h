@@ -21,7 +21,6 @@ public:
 	void LoadFromFile(std::string);
 	void SaveToFile(std::string);
 	void ExecuteNode(Node&);
-	void ExecuteNodeAsync(Node&);
 	void Configure();
 	void Build();
 	void Execute();

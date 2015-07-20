@@ -50,82 +50,43 @@ void ExecutionPlan::ExecuteNode(Node& target)
 	target.Execute();
 }
 
+#ifdef ALLOW_MULTITHREADING
 
+// concurrent execution function
+#else
 
 
 void ExecutionPlan::ResolveDependency(std::vector<Node>& target)
 {
 	for each (auto item in target)
 	{
-		if (!item.IsHot())
+		if (item.IsReady())
 		{
-			// resolve one step down
+			// computed node do nothing
+		}
+		else if (item.IsExecutable())
+		{
+			item.Execute();
 		}
 		else
-		{	
-			if (!item.executing)
-			{
-				
-				item.Execute();
-			}
-			else
-			{
-				while (item.executing)
-				{
-					//std::this_thread::yield();
-				}
-				//wait for execution
-			}
+		{
+			auto ResolveTarget = item.GetDependency();
+			ResolveDependency(ResolveTarget);
+			item.Execute();
 		}
 	}
 }
+
 
 void ExecutionPlan::Execute()
 {
-	std::stack<Node> PendingStack;
-	auto endNodes = this->EndNodes;
-	for (size_t i = 0; i < EndNodes.size(); i++)
+	for each (auto item in this->StartNodes)
 	{
-		auto currentDependency = EndNodes.at(i).GetDependency();
-		int dep_size = currentDependency.size();
-		if ((EndNodes.size() > 1) && (i - 1 != EndNodes.size()))
-		{
-			if (dep_size != 0)
-			{
-#ifdef ALLOW_MULTITHREADING
-				std::future<void> result(std::async(&ExecutionPlan::ResolveDependency, this, EndNodes.at(i).GetDependency()));
-#else
-
-				
-				ResolveDependency(EndNodes.at(i).GetDependency());
-				//ResolveDependencyAsync(EndNodes.at(i).GetDependency());
-#endif
-			}
-			else
-			{
-#ifdef ALLOW_MULTITHREADING
-				std::future<void> result(std::async(&ExecutionPlan::ExecuteNode, this, EndNodes.at(i)));
-#else
-				
-				ExecuteNode(EndNodes.at(i));
-				//ExecuteNodeAsync(EndNodes.at(i));
-#endif
-			}
-		}
-		else
-		{
-			if (dep_size != 0)
-			{
-				ResolveDependency(EndNodes.at(i).GetDependency());
-			}
-			else
-			{
-				ExecuteNode(EndNodes.at(i));
-
-			}
-		}
+		if ()
 	}
 }
+#endif
+
 
 ExecutionPlan::ExecutionPlan()
 {
