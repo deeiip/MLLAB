@@ -4,6 +4,7 @@
 #include "BaseTypes.h"
 #pragma once
 
+// This shit need to be movable, used with emplace back
 class FileTypeEndpoint : Endpoint
 {
 private:
@@ -11,10 +12,12 @@ private:
 	std::string fullPath;
 	DataFileFormat format;
 	const EndPointType ioType = EndPointType::FileType;
+	int id;
 public:
 	FileTypeEndpoint();
 	bool IsFileType();
 	bool IsValueType();
+	int getId();
 	~FileTypeEndpoint();
 };
 

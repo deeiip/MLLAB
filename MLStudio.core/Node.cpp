@@ -1,64 +1,37 @@
 #include "stdafx.h"
 #include "Node.h"
+#include "Factory.h"
 
 
-Node::Node()
-{
-	ResultReady = false;
-}
 
-Node::Node(const Node&)
+Node::Node(NodeMeta) : 
+inputEndCount(3), 
+outEndCount(4)
 {
-
-}
-Node::Node(Node&&)
-{
-
-}
-Node& Node::operator = (const Node&)
-{
-	return Node();
-}
-
-
-size_t Node::GetInputCount()
-{
-	return this->NodeInputCount;
-}
-size_t Node::GetOutputCount()
-{
-	return this->NodeOutputCount;
-}
-bool Node::IsReady()
-{
-	return this->ResultReady;
-}
-std::vector<Node>& Node::GetDependency()
-{
-	return this->ConnectsFrom;
-}
-void Node::Execute()
-{
-	ResultReady = true;
-}
-bool Node::IsExecutable()
-{
-	for each (auto item in this->ConnectsFrom)
+	for (size_t i = 0; i < inputEndCount; i++)
 	{
-		if(!item.IsReady())
-		{
-			return false;
-		}
+		inputs.insert(std::make_pair(i, Factory::ProduceInputEndpoint()));
 	}
-	return true;
+	for (size_t i = 0; i < outEndCount; i++)
+	{
+		outputs.insert(std::make_pair(i, Factory::ProduceOutputEndpoint()));
+	}
 }
-#ifdef ALLOW_MULTITHREADING
-bool Node::IsHot()
+std::map<size_t, InputEndpoint>& Node::GetInputMapping()
+{
+	return this->inputs;
+}
+std::map<size_t, OutputEndpoint>& Node::GetOutputMapping()
+{
+	return this->outputs;
+}
+void Node::ConnectInToOut(InputEndpoint&, OutputEndpoint&)
 {
 
 }
-#endif
+
 Node::~Node()
 {
 
 }
+
