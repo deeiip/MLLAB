@@ -6,6 +6,10 @@ InputEndpoint::InputEndpoint()
 {
 }
 
+void InputEndpoint::SubscribeOutput(int)
+{
+
+}
 
 InputEndpoint::~InputEndpoint()
 {

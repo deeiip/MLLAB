@@ -25,9 +25,19 @@ std::map<size_t, OutputEndpoint>& Node::GetOutputMapping()
 {
 	return this->outputs;
 }
-void Node::ConnectInToOut(InputEndpoint&, OutputEndpoint&)
+void Node::ConnectInToOut(InputEndpoint& inp, OutputEndpoint& out)
 {
+	inp.SubscribeOutput(out.getId());
+}
 
+unsigned int Node::GetId()
+{
+	return 1234;
+}
+
+unsigned int Node::SetId(unsigned int)
+{
+	return 1234;
 }
 
 Node::~Node()

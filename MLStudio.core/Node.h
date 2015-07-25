@@ -26,6 +26,8 @@ public:
 	std::map<size_t, InputEndpoint>& GetInputMapping();
 	std::map<size_t, OutputEndpoint>& GetOutputMapping();
 	void ConnectInToOut(InputEndpoint&, OutputEndpoint&);
+	unsigned int GetId();
+	unsigned int SetId(unsigned int);
 	~Node();
 };
 

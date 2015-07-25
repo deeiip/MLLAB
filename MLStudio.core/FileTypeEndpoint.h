@@ -13,11 +13,15 @@ private:
 	DataFileFormat format;
 	const EndPointType ioType = EndPointType::FileType;
 	int id;
+	bool mandetory;
 public:
 	FileTypeEndpoint();
 	bool IsFileType();
 	bool IsValueType();
 	int getId();
+	bool IsMandetory();
+	void SetFilename(std::string);
+	void SetPath(std::string);
 	~FileTypeEndpoint();
 };
 
