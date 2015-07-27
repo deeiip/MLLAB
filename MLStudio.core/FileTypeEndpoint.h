@@ -8,13 +8,14 @@
 class FileTypeEndpoint : Endpoint
 {
 private:
+	
+public:
 	std::string correspondingFileName;
 	std::string fullPath;
 	DataFileFormat format;
 	const EndPointType ioType = EndPointType::FileType;
 	int id;
 	bool mandetory;
-public:
 	FileTypeEndpoint();
 	bool IsFileType();
 	bool IsValueType();

@@ -6,9 +6,14 @@ InputEndpoint::InputEndpoint()
 {
 }
 
-void InputEndpoint::SubscribeOutput(int)
+void InputEndpoint::SubscribeOutput(std::string str)
 {
+	fullPath = str;
+}
 
+std::string InputEndpoint::GetSource()
+{
+	return fullPath;
 }
 
 InputEndpoint::~InputEndpoint()

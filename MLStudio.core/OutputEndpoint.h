@@ -1,10 +1,11 @@
 #pragma once
 #include "FileTypeEndpoint.h"
 class OutputEndpoint :
-	public FileTypeEndpoint
+	private FileTypeEndpoint
 {
 public:
 	OutputEndpoint();
+	std::string GetSink();
 	~OutputEndpoint();
 };
 

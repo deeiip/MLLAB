@@ -1,11 +1,12 @@
 #pragma once
 #include "FileTypeEndpoint.h"
 class InputEndpoint :
-	public FileTypeEndpoint
+	private FileTypeEndpoint
 {
 public:
 	InputEndpoint();
-	void SubscribeOutput(int);
+	void SubscribeOutput(std::string);
+	std::string GetSource();
 	~InputEndpoint();
 };
 

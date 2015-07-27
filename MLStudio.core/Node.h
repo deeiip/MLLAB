@@ -23,11 +23,15 @@ private:
 
 public:
 	Node(NodeMeta);
-	std::map<size_t, InputEndpoint>& GetInputMapping();
-	std::map<size_t, OutputEndpoint>& GetOutputMapping();
+	const std::map<size_t, InputEndpoint>& GetInputMapping();
+	const std::map<size_t, OutputEndpoint>& GetOutputMapping();
 	void ConnectInToOut(InputEndpoint&, OutputEndpoint&);
 	unsigned int GetId();
-	unsigned int SetId(unsigned int);
+	void SetId(unsigned int);
+	Node& operator=(const Node&);
+
+
+	void ConnectNode(Node&, size_t, size_t);
 	~Node();
 };
 

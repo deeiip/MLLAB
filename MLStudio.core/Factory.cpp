@@ -15,11 +15,14 @@ InputEndpoint Factory::ProduceInputEndpoint()
 OutputEndpoint Factory::ProduceOutputEndpoint()
 {
 	OutputEndpoint ret;
-	ret.SetPath("some/path");
-	ret.SetFilename("some_UNIQUE_name");
+	//ret.SetPath("some/path");
+	//ret.SetFilename("some_UNIQUE_name");
 	return ret;
 }
 
 Factory::~Factory()
 {
 }
+
+
+std::atomic<int> Utility::id_marker = 0;
